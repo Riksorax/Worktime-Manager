@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:Worktime_Manager.ViewModels"
+             xmlns:model1="clr-namespace:Worktime_Manager.Models"
+             x:Class="Worktime_Manager.Views.DateTimePickChart"
+             x:DataType="viewmodels:DateTCPViewModel"
+             x:Name="DateTimePage">
+    <ContentPage.BindingContext>
+        <viewmodels:DateTCPViewModel/>
+    </ContentPage.BindingContext>
+
+    <ListView 
+        CachingStrategy="RecycleElement"
+        BackgroundColor="Transparent"
+        ItemsSource="{Binding DateTimePick}"
+        HasUnevenRows="True"
+        SeparatorVisibility="None"
+        IsPullToRefreshEnabled="True"
+        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        RefreshCommand="{Binding RefreshCommand}"
+        RefreshControlColor="LightGray">
+
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="model1:DateTimePick">
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem
+                            Text="Bearbeiten"/>
+                        <MenuItem
+                            Text="Löschen"
+                            Command="{Binding Source={x:Reference DateTimePage}, Path=BindingContext.RemoveCommand}"
+                            CommandParameter="{Binding .}"
+                            IsDestructive="True"/>
+                    </ViewCell.ContextActions>
+                    <Grid Padding="10">
+                        <Frame CornerRadius="20"
+                               HasShadow="True">
+                            <StackLayout VerticalOptions="Center">
+                                <Label
+                                    VerticalOptions="Center"
+                                    TextColor="{AppThemeBinding Light=Black, Dark=Black}"
+                                    Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}"/>
+                                <Label
+                                    VerticalOptions="Center"
+                                    TextColor="{AppThemeBinding Light=Black, Dark=Black}"
+                                    Text="{Binding Hours_Today, StringFormat='{0:hh\\:mm}'}"/>
+                                <Label
+                                    VerticalOptions="Center"
+                                    TextColor="{AppThemeBinding Light=Black, Dark=Black}"
+                                    Text="{Binding OverTime_Today, StringFormat='{0:hh\\:mm}'}"/>
+                                <Label
+                                    VerticalOptions="Center"
+                                    TextColor="{AppThemeBinding Light=Black, Dark=Black}"
+                                    Text="{Binding OverTime_Total, StringFormat='{0:hh\\:mm}'}"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+                </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Footer>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button
+                    CornerRadius="20"
+                    Text="Load more"/>
+            </StackLayout>
+        </ListView.Footer>
+    </ListView>
+    
+</ContentPage>
