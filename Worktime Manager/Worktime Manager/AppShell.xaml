@@ -82,7 +82,7 @@
         <ShellContent Route="DateTimePage" ContentTemplate="{DataTemplate local:DateTimeCalculate}" />
     </FlyoutItem>
     <FlyoutItem Title="Komisonierzeiten ">
-        <ShellContent Route="PickTimeCalculatePage" ContentTemplate="{DataTemplate local:PickTimeCalculate}"/>
+        <ShellContent Route="PickTimeCalculatePage" ContentTemplate="{DataTemplate local:PickTimeCalculatePage}"/>
     </FlyoutItem>
     <FlyoutItem Title="Überstunden und Prozente Tabelle">
         <ShellContent Route="DateTimePickChart" ContentTemplate="{DataTemplate local:DateTimePickChart}"/>

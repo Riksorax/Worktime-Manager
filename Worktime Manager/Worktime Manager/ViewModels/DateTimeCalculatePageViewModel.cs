@@ -13,7 +13,7 @@ namespace Worktime_Manager.ViewModels
     public partial class DateTimeCalculatePageViewModel : ViewModelBase
     {
         public ICommand WorkTimeComplete { get; }
-        public DateTime dateTodayPicker { get; set; }
+        public DateTime DateToday { get; set; }
         public TimeSpan startTimePicker { get; set; }
         public TimeSpan endTimePicker { get; set; }
         public TimeSpan breakTimePicker { get; set; }
@@ -48,12 +48,13 @@ namespace Worktime_Manager.ViewModels
         public void TimeCalculate()
         {
 
-            dateToday_Label = dateTodayPicker.Date.ToString("dd/MM/yyyy");
+            dateToday_Label = DateToday.ToString("dd/MM/yyyy");
 
             //Hier werden die gesamten Stunden mit der Pause berechnet und ausgegeben
             TimeSpan totalhours = endTimePicker - startTimePicker;
             TimeSpan hoursWBreak = totalhours - breakTimePicker;
-            hoursTotal_Label = hoursWBreak.TotalHours.ToString("hh/:mm");
+            string totalHoursString = hoursWBreak.ToString();
+            hoursTotal_Label = totalHoursString;
 
             //Hier werde die tatsächlichen Stunden mit den eigentlichen stunden verrechnet
             double workHours = 7.7;
@@ -63,20 +64,22 @@ namespace Worktime_Manager.ViewModels
 
             if (overTiToday < hours)
             {
-                overTimeToday_Label = overTiToday.ToString("hh/:mm");
+                string overTiTodayString = overTiToday.ToString();
+                overTimeToday_Label = overTiTodayString;
             }
             else if (overTiToday > hours)
             {
                 double overTimeTyZero = 0.0;
                 TimeSpan zero = TimeSpan.FromMinutes(overTimeTyZero);
-                overTimeToday_Label = zero.ToString("hh/:mm");
+                overTimeToday_Label = zero.ToString();
             }
 
 
             //Hier sind die gesamten Überstunden standtmäißg  auf  null
             int overTimeZero = 0;
             TimeSpan overTimeTotal = TimeSpan.FromHours(overTimeZero);
-            overTimeTotal_Label = overTimeTotal.ToString("hh/:mm");
+            string overTimeString = overTimeTotal.TotalHours.ToString();
+            overTimeTotal_Label = overTimeString;
 
             //Hie werden die Kompletten überstunden ausgerechnet
 
@@ -84,14 +87,16 @@ namespace Worktime_Manager.ViewModels
             {
 
                 TimeSpan overTimeTotal1 = overTimeTotal + overTiToday;
-                overTimeTotal_Label = overTimeTotal1.ToString("hh/:mm");
+                string overTimeString1 = overTimeTotal1.TotalHours.ToString();
+                overTimeTotal_Label = overTimeString;
 
             }
             else if (hoursWBreak > hours)
             {
 
                 TimeSpan overTimeTotal1 = overTimeTotal - overTiToday;
-                overTimeTotal_Label = overTimeTotal1.ToString("hh/:mm");
+                string overTimeString1 = overTimeTotal1.TotalHours.ToString();
+                overTimeTotal_Label = overTimeString;
             }
 
         }

@@ -10,6 +10,10 @@
         <viewmodels:DateTCPViewModel/>
     </ContentPage.BindingContext>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddCommand}"/>
+    </ContentPage.ToolbarItems>
+    
     <ListView 
         CachingStrategy="RecycleElement"
         BackgroundColor="Transparent"

@@ -52,7 +52,6 @@
                 Grid.ColumnSpan="6"
                 Grid.Row="1"
                 TextColor="{AppThemeBinding Light=Black, Dark=Black}"
-                Date="{Binding dateTodayPicker}"
                 HorizontalOptions="Center"/>
         <!--dateToday-->
             <Label 
@@ -129,7 +128,7 @@
                 HorizontalOptions="End"
                 HorizontalTextAlignment="Center"
                 TextColor="{AppThemeBinding Light=Black, Dark=Black}"
-                Text="{Binding dateToday_Label}"/>
+                Text="{Binding dateToday_Label, StringFormat='{0:dd.MM.yyyy}'}"/>
         <!--, StringFormat='{0:dd.MM.yyyy}'-->
             <Label 
                 Grid.ColumnSpan="4"
@@ -145,7 +144,7 @@
                 HorizontalOptions="End"
                 HorizontalTextAlignment="Center"
                 TextColor="{AppThemeBinding Light=Black, Dark=Black}"
-                Text="{Binding hoursTotal_Label}"/>
+                Text="{Binding hoursTotal_Label, StringFormat='{0:hh\\:mm}'}"/>
         <!--, StringFormat='{0:hh\\:mm}'-->
             <Label 
                 Grid.ColumnSpan="4"
@@ -161,7 +160,7 @@
                 HorizontalOptions="End"
                 HorizontalTextAlignment="Center"
                 TextColor="{AppThemeBinding Light=Black, Dark=Black}"
-                Text="{Binding overTimeToday_Label}"/>
+                Text="{Binding overTimeToday_Label, StringFormat='{0:hh\\:mm}'}"/>
 
             <Label 
                 Grid.ColumnSpan="4"
@@ -177,7 +176,7 @@
                 HorizontalOptions="End"
                 HorizontalTextAlignment="Center"
                 TextColor="{AppThemeBinding Light=Black, Dark=Black}"
-                Text="{Binding overTimeTotal_Label}"/>
+                Text="{Binding overTimeTotal_Label, StringFormat='{0:hh\\:mm}'}"/>
 
             <!--Die Label hier sind wieder nur als Lückenfüller um etwas abstand zu haben und ein Button um die Zeiten zu Speichern  -->
 

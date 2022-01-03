@@ -12,9 +12,7 @@ using Worktime_Manager.Services;
 namespace Worktime_Manager.ViewModels
 {
     public partial class DateTCPViewModel : ViewModelBase
-
-    {
-        
+    {      
 
         public ObservableRangeCollection<DateTimePick> DateTimePick { get; set; }
         public AsyncCommand RefreshCommand { get; }
