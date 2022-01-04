@@ -10,12 +10,12 @@ namespace Worktime_Manager.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        public String Date { get; set; }
+        public DateTime Date { get; set; }
 
-        public String Hours_Today { get; set; }
+        public TimeSpan Hours_Today { get; set; }
 
-        public String OverTime_Today { get; set; }
+        public TimeSpan OverTime_Today { get; set; }
 
-        public String OverTime_Total { get; set; }
+        public TimeSpan OverTime_Total { get; set; }
     }
 }

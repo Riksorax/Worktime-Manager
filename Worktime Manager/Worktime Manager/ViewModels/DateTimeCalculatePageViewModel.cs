@@ -39,8 +39,58 @@ namespace Worktime_Manager.ViewModels
 
         async Task Add()
         {
-            
-            await DateTimePickService.AddDateTimePick(dateToday_Label, hoursTotal_Label, overTimeToday_Label, overTimeTotal_Label);
+            DateTime dateToday = DateTime.Now;
+
+            //Hier werden die gesamten Stunden mit der Pause berechnet und ausgegeben
+            TimeSpan totalhours = endTimePicker - startTimePicker;
+            TimeSpan hoursWBreak = totalhours - breakTimePicker;
+            //string totalHoursString = hoursWBreak.ToString();
+            //hoursTotal_Label = totalHoursString;
+
+            //Hier werde die tatsächlichen Stunden mit den eigentlichen stunden verrechnet
+            double workHours = 7.7;
+            TimeSpan hours = TimeSpan.FromHours(workHours);
+            TimeSpan overTiToday = hoursWBreak - hours;
+
+
+            if (overTiToday < hours)
+            {
+                TimeSpan overTiTodayString = overTiToday;
+                //overTimeToday_Label = overTiTodayString;
+            }
+            else if (overTiToday > hours)
+            {
+                double overTimeTyZero = 0.0;
+                TimeSpan zero = TimeSpan.FromMinutes(overTimeTyZero);
+                //overTimeToday_Label = zero.ToString();
+            }
+
+
+            //Hier sind die gesamten Überstunden standtmäißg  auf  null
+            int overTimeZero = 0;
+            TimeSpan overTimeTotal = TimeSpan.FromHours(overTimeZero);
+            // overTimeString = overTimeTotal.TotalHours.ToString();
+            //overTimeTotal_Label = overTimeString;
+
+            //Hie werden die Kompletten überstunden ausgerechnet
+
+            if (hoursWBreak < hours)
+            {
+
+                TimeSpan overTimeTotal1 = overTimeTotal + overTiToday;
+                string overTimeString1 = overTimeTotal1.TotalHours.ToString();
+                // overTimeTotal_Label = overTimeString;
+
+            }
+            else if (hoursWBreak > hours)
+            {
+
+                TimeSpan overTimeTotal1 = overTimeTotal - overTiToday;
+                string overTimeString1 = overTimeTotal1.TotalHours.ToString();
+                // overTimeTotal_Label = overTimeString;
+            }
+
+            await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
         }
 
 
@@ -53,8 +103,8 @@ namespace Worktime_Manager.ViewModels
             //Hier werden die gesamten Stunden mit der Pause berechnet und ausgegeben
             TimeSpan totalhours = endTimePicker - startTimePicker;
             TimeSpan hoursWBreak = totalhours - breakTimePicker;
-            string totalHoursString = hoursWBreak.ToString();
-            hoursTotal_Label = totalHoursString;
+            //string totalHoursString = hoursWBreak.ToString();
+            //hoursTotal_Label = totalHoursString;
 
             //Hier werde die tatsächlichen Stunden mit den eigentlichen stunden verrechnet
             double workHours = 7.7;
@@ -64,22 +114,22 @@ namespace Worktime_Manager.ViewModels
 
             if (overTiToday < hours)
             {
-                string overTiTodayString = overTiToday.ToString();
-                overTimeToday_Label = overTiTodayString;
+                TimeSpan overTiTodayString = overTiToday;
+                //overTimeToday_Label = overTiTodayString;
             }
             else if (overTiToday > hours)
             {
                 double overTimeTyZero = 0.0;
                 TimeSpan zero = TimeSpan.FromMinutes(overTimeTyZero);
-                overTimeToday_Label = zero.ToString();
+                //overTimeToday_Label = zero.ToString();
             }
 
 
             //Hier sind die gesamten Überstunden standtmäißg  auf  null
             int overTimeZero = 0;
             TimeSpan overTimeTotal = TimeSpan.FromHours(overTimeZero);
-            string overTimeString = overTimeTotal.TotalHours.ToString();
-            overTimeTotal_Label = overTimeString;
+            // overTimeString = overTimeTotal.TotalHours.ToString();
+            //overTimeTotal_Label = overTimeString;
 
             //Hie werden die Kompletten überstunden ausgerechnet
 
@@ -88,7 +138,7 @@ namespace Worktime_Manager.ViewModels
 
                 TimeSpan overTimeTotal1 = overTimeTotal + overTiToday;
                 string overTimeString1 = overTimeTotal1.TotalHours.ToString();
-                overTimeTotal_Label = overTimeString;
+               // overTimeTotal_Label = overTimeString;
 
             }
             else if (hoursWBreak > hours)
@@ -96,9 +146,8 @@ namespace Worktime_Manager.ViewModels
 
                 TimeSpan overTimeTotal1 = overTimeTotal - overTiToday;
                 string overTimeString1 = overTimeTotal1.TotalHours.ToString();
-                overTimeTotal_Label = overTimeString;
+               // overTimeTotal_Label = overTimeString;
             }
-
         }
 
         public void WorkTimeComplete_Click()

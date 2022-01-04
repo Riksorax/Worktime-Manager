@@ -24,7 +24,7 @@ namespace Worktime_Manager.Services
             await db.CreateTableAsync<DateTimePick>();
         }
 
-        public static async Task AddDateTimePick(String date, String hours_today, String overTime_today, String overTime_total)
+        public static async Task AddDateTimePick(DateTime date, TimeSpan hours_today, TimeSpan overTime_today, TimeSpan overTime_total)
         {
             await Init();
             var dateTimePick = new DateTimePick
