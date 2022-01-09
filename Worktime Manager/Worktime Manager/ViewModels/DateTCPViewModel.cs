@@ -1,4 +1,5 @@
 ﻿using Worktime_Manager.Models;
+using Worktime_Manager.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -36,6 +37,8 @@ namespace Worktime_Manager.ViewModels
 
         async Task Add()
         {
+            var route = $"{nameof(DateTimeCalculate)}";
+            await Shell.Current.GoToAsync(route);
             await Refresh();
         }
 

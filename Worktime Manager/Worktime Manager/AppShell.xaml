@@ -77,15 +77,16 @@
         When the Flyout is visible this defines the content to display in the flyout.
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
-    -->    
+    -->
+    <FlyoutItem Title="Überstunden und Prozente Tabelle">
+        <ShellContent Route="DateTimePickChart" ContentTemplate="{DataTemplate local:DateTimePickChart}"/>
+    </FlyoutItem>
     <FlyoutItem Title="Datum und Zeiten" Icon="icon_feed.png">
         <ShellContent Route="DateTimePage" ContentTemplate="{DataTemplate local:DateTimeCalculate}" />
     </FlyoutItem>
     <FlyoutItem Title="Komisonierzeiten ">
         <ShellContent Route="PickTimeCalculatePage" ContentTemplate="{DataTemplate local:PickTimeCalculatePage}"/>
     </FlyoutItem>
-    <FlyoutItem Title="Überstunden und Prozente Tabelle">
-        <ShellContent Route="DateTimePickChart" ContentTemplate="{DataTemplate local:DateTimePickChart}"/>
-    </FlyoutItem>
+    
 
 </Shell>
