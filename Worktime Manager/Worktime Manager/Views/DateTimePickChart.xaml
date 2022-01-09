@@ -11,8 +11,11 @@
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddCommand}"/>
+        <ToolbarItem Text="Add Arbeitszeiten" Command="{Binding AddCommand}"/>
+        <ToolbarItem Text="Add Überstunden"/>
+
     </ContentPage.ToolbarItems>
+
     
     <ListView 
         CachingStrategy="RecycleElement"

@@ -8,6 +8,7 @@ using MvvmHelpers.Commands;
 using System.Windows.Input;
 using Worktime_Manager.Services;
 using Xamarin.Forms;
+using Worktime_Manager.Models;
 
 namespace Worktime_Manager.ViewModels
 {
@@ -40,7 +41,7 @@ namespace Worktime_Manager.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        public void WorkTimeCalculate()
+        public async void WorkTimeCalculate()
         {
             DateTime dateToday = DateTime.Now;
 
@@ -59,35 +60,27 @@ namespace Worktime_Manager.ViewModels
 
             TimeSpan overTimeTotal = overTimeTotalZero + overTiToday;
 
-            _ = DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+            await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);                      
 
+        }
+
+        public async void OverTimeCalculate()
+        {
             //Hie werden die Kompletten überstunden ausgerechnet
 
             if (overTimeTotal < TimeSpan.Zero)
             {
-                var overTime = DateTimePickService.GetDateTimePick().Result;
-                overTime.Equals(overTimeTotal);
                 TimeSpan newOverTiTotal = overTimeTotal + overTiToday;
                 overTimeTotal = newOverTiTotal;
-                _ = DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+                await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
 
             }
             else if (overTimeTotal > overTiToday)
             {
-                var overTime = DateTimePickService.GetDateTimePick().Result;
-                overTime.Equals(overTimeTotal);
                 TimeSpan newOverTiTotal = overTimeTotal + overTiToday;
                 overTimeTotal = newOverTiTotal;
-                _ = DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+                await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
             }
-
-            
-
-        }
-
-        public void OverTimeCalculate()
-        {
-            
         }
 
 
