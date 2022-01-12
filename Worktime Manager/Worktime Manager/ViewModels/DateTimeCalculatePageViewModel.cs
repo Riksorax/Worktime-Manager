@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Worktime_Manager.Services;
 using Xamarin.Forms;
 using Worktime_Manager.Models;
+using System.Linq;
 
 namespace Worktime_Manager.ViewModels
 {
@@ -27,11 +28,14 @@ namespace Worktime_Manager.ViewModels
         public TimeSpan overTimeTotal { get; set; }
         public AsyncCommand AddCommand { get; }
 
+        public ObservableRangeCollection<DateTimePick> DateTimePick { get; set; }
+
 
         public DateTimeCalculatePageViewModel()
         {
             AddCommand = new AsyncCommand(Add);
 
+            DateTimePick = new ObservableRangeCollection<DateTimePick>();
         }
 
         async Task Add()
@@ -67,7 +71,24 @@ namespace Worktime_Manager.ViewModels
         public async void OverTimeCalculate()
         {
             //Hie werden die Kompletten überstunden ausgerechnet
+            List<DateTimePick> newOverTime = (List<DateTimePick>)await DateTimePickService.GetDateTimePick();
+            foreach(var item in newOverTime)
+            {
+                if (item.OverTime_Today < item.Hours_Today)
+                {
+                    //this.overTimeTotal.Add(item.OverTime_Total);
+                    TimeSpan overTimeTotal = item.OverTime_Today + item.OverTime_Total;
+                    await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+                }
+                else if(item.OverTime_Today > item.Hours_Today)
+                {
+                    TimeSpan overTimeTotal = item.OverTime_Total - item.OverTime_Today;
+                    await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+                }
 
+            }
+
+            /*
             if (overTimeTotal < TimeSpan.Zero)
             {
                 TimeSpan newOverTiTotal = overTimeTotal + overTiToday;
@@ -80,7 +101,7 @@ namespace Worktime_Manager.ViewModels
                 TimeSpan newOverTiTotal = overTimeTotal + overTiToday;
                 overTimeTotal = newOverTiTotal;
                 await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
-            }
+            }*/
         }
 
 
