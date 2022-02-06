@@ -16,6 +16,7 @@ namespace Worktime_Manager.ViewModels
     public partial class DateTimeCalculatePageViewModel : ViewModelBase
     {
         public ICommand WorkTimeComplete { get; }
+        public ICommand OverTimeChange_Clicked { get; }
         public DateTime DateToday { get; set; }
         public TimeSpan startTimePicker { get; set; }
         public TimeSpan endTimePicker { get; set; }
@@ -26,22 +27,31 @@ namespace Worktime_Manager.ViewModels
         public TimeSpan hoursWBreak { get; set; }
         public TimeSpan overTiToday { get; set; }
         public TimeSpan overTimeTotal { get; set; }
-        public AsyncCommand AddCommand { get; }
+        public AsyncCommand AddHoursCommand { get; }
+        public AsyncCommand AddOverTimeCommand { get; }
 
         public ObservableRangeCollection<DateTimePick> DateTimePick { get; set; }
 
 
         public DateTimeCalculatePageViewModel()
         {
-            AddCommand = new AsyncCommand(Add);
+            AddHoursCommand = new AsyncCommand(HoursCommand);
+
+            AddOverTimeCommand = new AsyncCommand(OverTimeCommand);
 
             DateTimePick = new ObservableRangeCollection<DateTimePick>();
         }
 
-        async Task Add()
+        async Task HoursCommand()
         {
             WorkTimeCalculate();
             //OverTimeCalculate();
+            await Shell.Current.GoToAsync("..");
+        }
+
+        async Task OverTimeCommand()
+        {
+            OverTimeCalculate();
             await Shell.Current.GoToAsync("..");
         }
 
@@ -83,20 +93,24 @@ namespace Worktime_Manager.ViewModels
         }
 
         public async void OverTimeCalculate()
-        {
+        {        
+
             //Hie werden die Kompletten überstunden ausgerechnet
             List<DateTimePick> newOverTime = (List<DateTimePick>)await DateTimePickService.GetDateTimePick();
-            foreach(var item in newOverTime)
+            TimeSpan zero = TimeSpan.Zero;
+            TimeSpan plusOverTime = overHoursPTimePicker;
+            TimeSpan minusOverTime = overTimeMTimePicker;
+            foreach (var dateTimeList in newOverTime)
             {
-                if (item.OverTime_Today < item.Hours_Today)
+                if (plusOverTime > zero)
                 {
                     //this.overTimeTotal.Add(item.OverTime_Total);
-                    TimeSpan overTimeTotal = item.OverTime_Today + item.OverTime_Total;
+                    TimeSpan overTimeTotal = plusOverTime + dateTimeList.OverTime_Total;
                     await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
                 }
-                else if(item.OverTime_Today > item.Hours_Today)
+                else if(minusOverTime > zero)
                 {
-                    TimeSpan overTimeTotal = item.OverTime_Total - item.OverTime_Today;
+                    TimeSpan overTimeTotal = dateTimeList.OverTime_Total - minusOverTime;
                     await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
                 }
 

@@ -104,7 +104,7 @@
                 Grid.ColumnSpan="4"
                 Grid.Row="6"                
                 Text="Zeiten Speichern" 
-                Command="{Binding AddCommand}"           
+                Command="{Binding AddHoursCommand}"           
                 HorizontalOptions="Center"/>
 
             <!--Command="{Binding SaveTime_Clicked}"-->
@@ -150,10 +150,10 @@
             <Button 
                 Grid.ColumnSpan="4"
                 Grid.Row="10"
-                
+                Command="{Binding AddOverTimeCommand}"
                 Text="Überstunden ändern"
                 HorizontalOptions="Center"
                 IsEnabled="True"/>
-            <!--Command="{Binding OverTimeChange_Clicked}"-->
+            <!---->
         </Grid>
 </ContentPage>

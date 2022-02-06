@@ -34,8 +34,15 @@ namespace Worktime_Manager.Services
                 OverTime_Today = overTime_today,
                 OverTime_Total = overTime_total
             };
-
-           var id = await db.InsertAsync(dateTimePick);
+            if (dateTimePick.Id != 0)
+            {
+                await db.UpdateAsync(dateTimePick);
+            }
+            else
+            {
+                await db.InsertAsync(dateTimePick);
+            }
+           //var id = await db.InsertAsync(dateTimePick);
         }
 
         public static async Task RemoveDateTimePick(int id)
