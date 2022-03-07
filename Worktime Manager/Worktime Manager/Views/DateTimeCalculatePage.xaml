@@ -45,6 +45,7 @@
                 Visual="Material"
                 Grid.ColumnSpan="4"
                 Grid.Row="1"
+                Date="{Binding dateTodayPicker}"
                 TextColor="{AppThemeBinding Light=Black, Dark=Black}"
                 HorizontalOptions="Center"/>
         <!--dateToday-->

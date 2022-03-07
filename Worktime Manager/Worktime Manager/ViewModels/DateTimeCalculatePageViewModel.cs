@@ -16,7 +16,7 @@ namespace Worktime_Manager.ViewModels
     public partial class DateTimeCalculatePageViewModel : ViewModelBase
     {
         public ICommand WorkTimeComplete { get; }
-        public DateTime DateToday { get; set; }
+        public DateTime dateTodayPicker { get; set; }
         public TimeSpan startTimePicker { get; set; }
         public TimeSpan endTimePicker { get; set; }
         public TimeSpan breakTimePicker { get; set; }
@@ -41,13 +41,14 @@ namespace Worktime_Manager.ViewModels
         async Task Add()
         {
             WorkTimeCalculate();
-            //OverTimeCalculate();
+            OverTimeCalculate();
             await Shell.Current.GoToAsync("..");
         }
 
         public async void WorkTimeCalculate()
         {
-            DateTime dateToday = DateTime.Now;
+            //Hier greife ich das eingestellte Datum vom DatePicker ab und lasse es weiter unten speichern
+            DateTime dateToday = dateTodayPicker; ;
 
             //Hier werden die gesamten Stunden mit der Pause berechnet und ausgegeben
             TimeSpan totalhours = endTimePicker - startTimePicker;
@@ -61,45 +62,48 @@ namespace Worktime_Manager.ViewModels
             //Hier sind die gesamten Überstunden standtmäißg  auf  null und alle daten werden bis dahin gespeichert
 
             TimeSpan overTimeTotalZero = TimeSpan.Zero;
-            await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotalZero);
+            TimeSpan overTimeTotal = overTimeTotalZero + overTiToday;
+            await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
 
-            //Hie werden die Kompletten überstunden ausgerechnet
-            List<DateTimePick> newOverTime = (List<DateTimePick>)await DateTimePickService.GetDateTimePick();
-            foreach (var item in newOverTime)
-            {
-                if (item.OverTime_Today < item.Hours_Today)
-                {
-                    //this.overTimeTotal.Add(item.OverTime_Total);
-                    TimeSpan overTimeTotal = item.OverTime_Total + item.OverTime_Today;
-                    await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
-                }
-                else if (item.OverTime_Today > item.Hours_Today)
-                {
-                    TimeSpan overTimeTotal = item.OverTime_Total - item.OverTime_Today;
-                    await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
-                }
-
-            }
-        }
-
-        public async void OverTimeCalculate()
-        {
-            //Hie werden die Kompletten überstunden ausgerechnet
-            List<DateTimePick> newOverTime = (List<DateTimePick>)await DateTimePickService.GetDateTimePick();
+            /*
+            //Hie werden die Kompletten überstunden ausgerechnet. Es sollen ansich die wertev ich brauhche geladen werden und dann wieder gespeichert werden
+            IList<DateTimePick> newOverTime = (IList<DateTimePick>)await DateTimePickService.GetDateTimePick();
             foreach(var item in newOverTime)
             {
                 if (item.OverTime_Today < item.Hours_Today)
                 {
                     //this.overTimeTotal.Add(item.OverTime_Total);
-                    TimeSpan overTimeTotal = item.OverTime_Today + item.OverTime_Total;
-                    await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+                    overTimeTotal = item.OverTime_Total + item.OverTime_Today;;
                 }
-                else if(item.OverTime_Today > item.Hours_Today)
+                else if (item.OverTime_Today > item.Hours_Today)
                 {
-                    TimeSpan overTimeTotal = item.OverTime_Total - item.OverTime_Today;
-                    await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+                    overTimeTotal = item.OverTime_Total - item.OverTime_Today;
                 }
+                await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+            }*/
+        }
 
+        //Das ist ansich das gleiche wie oben nur als eine einzelne Funktion
+        public async void OverTimeCalculate()
+        {
+            var newHours = DateTimePick.;
+            TimeSpan hoursToday = newHours.Hours_Today;
+            var newOverTimeToday = DateTimePick.ElementAt(2);
+            TimeSpan overTiToday  = newOverTimeToday.OverTime_Today;
+            var newOverTimeTotal = DateTimePick.ElementAt(3);
+            TimeSpan overTiTotal = newOverTimeTotal.OverTime_Total;
+
+            //Hie werden die Kompletten überstunden ausgerechnet
+            if (overTiToday < hoursToday)
+            {
+                //this.overTimeTotal.Add(item.OverTime_Total);
+                TimeSpan overTimeTotal = overTiToday + overTiTotal;
+                await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
+            }
+            else if(overTiToday > hoursToday)
+            {
+                TimeSpan overTimeTotal = overTiTotal - overTiToday;
+                await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
             }
 
             
