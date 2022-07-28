@@ -8,8 +8,6 @@
     <ContentPage.BindingContext>
         <viewmodels:DateTimeCalculatePageViewModel/>
     </ContentPage.BindingContext>
-    
-    
         <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

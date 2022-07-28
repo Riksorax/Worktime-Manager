@@ -58,8 +58,7 @@ namespace Worktime_Manager.ViewModels
         public async void WorkTimeCalculate()
         {
             //Hier greife ich das eingestellte Datum vom DatePicker ab und lasse es weiter unten speichern
-            DateTime dateToday = dateTodayPicker; ;
-
+            DateTime dateToday = dateTodayPicker;
             //Hier werden die gesamten Stunden mit der Pause berechnet und ausgegeben
             TimeSpan totalhours = endTimePicker - startTimePicker;
             TimeSpan hoursWBreak = totalhours - breakTimePicker;
