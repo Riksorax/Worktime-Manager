@@ -19,6 +19,7 @@ namespace Worktime_Manager.ViewModels
         public ICommand OverTimeChange_Clicked { get; }
         public DateTime DateToday { get; set; }
         public TimeSpan startTimePicker { get; set; }
+        public DateTime dateTodayPicker { get; set; }
         public TimeSpan endTimePicker { get; set; }
         public TimeSpan breakTimePicker { get; set; }
         public TimeSpan overHoursPTimePicker { get; set; }
@@ -94,7 +95,7 @@ namespace Worktime_Manager.ViewModels
 
         //Das ist ansich das gleiche wie oben nur als eine einzelne Funktion
         public async void OverTimeCalculate()
-        {        
+        {
 
             //Hie werden die Kompletten überstunden ausgerechnet
             List<DateTimePick> newOverTime = (List<DateTimePick>)await DateTimePickService.GetDateTimePick();
@@ -109,15 +110,16 @@ namespace Worktime_Manager.ViewModels
                     TimeSpan overTimeTotal = plusOverTime + dateTimeList.OverTime_Total;
                     await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
                 }
-                else if(minusOverTime > zero)
+                else if (minusOverTime > zero)
                 {
                     TimeSpan overTimeTotal = dateTimeList.OverTime_Total - minusOverTime;
                     await DateTimePickService.AddDateTimePick(dateToday, hoursWBreak, overTiToday, overTimeTotal);
                 }
 
-            
+
+            }
+
+
         }
-
-
     }
 }
