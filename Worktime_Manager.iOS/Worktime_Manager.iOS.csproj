@@ -11,7 +11,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Worktime_Manager.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Worktime Manager.iOS</AssemblyName>
+    <AssemblyName>Worktime_Manager.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
@@ -149,9 +149,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Worktime Manager\Worktime Manager.csproj">
-      <Project>{FD388C50-BFA6-42B5-B317-ECEBF4342721}</Project>
-      <Name>Worktime Manager</Name>
+    <ProjectReference Include="..\Worktime_Manager\Worktime_Manager.csproj">
+      <Project>{ace78671-a720-4f00-8154-caba49318ee2}</Project>
+      <Name>Worktime_Manager</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

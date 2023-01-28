@@ -8,7 +8,7 @@
     <TemplateGuid>{6968b3a4-1835-46a3-ac5c-1ae33b475983}</TemplateGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Worktime_Manager.Droid</RootNamespace>
-    <AssemblyName>Worktime Manager.Android</AssemblyName>
+    <AssemblyName>Worktime_Manager.Android</AssemblyName>
     <Deterministic>True</Deterministic>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -97,9 +97,9 @@
     <AndroidResource Include="Resources\drawable\icon_feed.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Worktime Manager\Worktime Manager.csproj">
-      <Project>{FD388C50-BFA6-42B5-B317-ECEBF4342721}</Project>
-      <Name>Worktime Manager</Name>
+    <ProjectReference Include="..\Worktime_Manager\Worktime_Manager.csproj">
+      <Project>{ace78671-a720-4f00-8154-caba49318ee2}</Project>
+      <Name>Worktime_Manager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

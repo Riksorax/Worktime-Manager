@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worktime Manager", "Worktime Manager\Worktime Manager.csproj", "{ACE78671-A720-4F00-8154-CABA49318EE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worktime_Manager", "Worktime_Manager\Worktime_Manager.csproj", "{ACE78671-A720-4F00-8154-CABA49318EE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worktime Manager.Android", "Worktime Manager.Android\Worktime Manager.Android.csproj", "{45FB0F97-6CFA-47D5-A824-8C8803C7D4CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worktime_Manager.Android", "Worktime_Manager.Android\Worktime_Manager.Android.csproj", "{45FB0F97-6CFA-47D5-A824-8C8803C7D4CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worktime Manager.iOS", "Worktime Manager.iOS\Worktime Manager.iOS.csproj", "{1934424E-5369-4046-B5D2-235BAFDF827C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worktime_Manager.iOS", "Worktime_Manager.iOS\Worktime_Manager.iOS.csproj", "{1934424E-5369-4046-B5D2-235BAFDF827C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worktime Manager.Blazor", "Worktime Manager.Blazor\Worktime Manager.Blazor.csproj", "{ADC3CADD-4D9D-4947-859B-E85199000C25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worktime_Manger.Blazor", "Worktime_Manger.Blazor\Worktime_Manger.Blazor.csproj", "{F388199A-CAA8-4198-9900-F0EDF082D499}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,18 +63,18 @@ Global
 		{1934424E-5369-4046-B5D2-235BAFDF827C}.Release|iPhone.Build.0 = Release|iPhone
 		{1934424E-5369-4046-B5D2-235BAFDF827C}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{1934424E-5369-4046-B5D2-235BAFDF827C}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Release|iPhone.Build.0 = Release|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{ADC3CADD-4D9D-4947-859B-E85199000C25}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Release|iPhone.Build.0 = Release|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{F388199A-CAA8-4198-9900-F0EDF082D499}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
